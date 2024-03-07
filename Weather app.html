@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Weather App</title>
+    <style>
+      body {
+        background-color: whitesmoke;
+        text-align: center;
+      }
+      h1 {
+        color: #1a64d6;
+        font-family: Arial, Helvetica, sans-serif;
+        font-size: 34px;
+        text-align: center;
+        margin-bottom: 4px;
+        margin-top: 0;
+      }
+      h2 {
+        font-family: Arial, Helvetica, sans-serif;
+        font-weight: normal;
+        font-size: 33px;
+        margin-top: 0;
+      }
+      p {
+        font-family: "Lucida Console", "Courier New", monospace;
+        font-weight: normal;
+        font-size: 18px;
+      }
+      .weather {
+        font-family: Arial, Helvetica, sans-serif;
+        margin: 15px 170px;
+        padding: 10px;
+      }
+      .weather:hover {
+        background-color: #fffbef;
+        transition: all 200ms ease;
+      }
+      span {
+        font-weight: bold;
+      }
+
+      button {
+        background-color: #1a64d6;
+        border: 1px solid transparent;
+        border-radius: 50px;
+        color: whitesmoke;
+        margin-bottom: 20px;
+        padding: 16px 22px;
+        font-size: 16px;
+      }
+      button:hover {
+        background: transparent;
+        color: #1a64d6;
+        border: 1px solid #1a64d6;
+      }
+      footer {
+        color: dimgray;
+        font-family: "Lucida Console", "Courier New", monospace;
+        font-size: 18px;
+        margin-bottom: 20px;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>
+      <span class="weatherSymbol">🌤</span> <br />Currently
+      <span class="currentTemp">21°</span> in
+      <span class="city">Tokyo</span>
+    </h1>
+    <h2>13° / <span>23°</span></h2>
+
+    <div class="weather">
+      <h3>🌧 Tomorrow</h3>
+      <p>10° / <span>22°</span></p>
+    </div>
+
+    <div class="weather">
+      <h3>🌥 Saturday</h3>
+      <p>15° / <span>17°</span></p>
+    </div>
+
+    <div class="weather">
+      <h3>☀️ Sunday</h3>
+      <p>25° / <span>28°</span></p>
+    </div>
+    <button>Change city</button>
+    <footer>Coded by Zia Rikhotso</footer>
+    <!--keep javascript at bottom right before body is closed-->
+    <script>
+      function changeCity() {
+        let city = prompt("What city do you live in");
+        let cityTemp = prompt("What is the weather in your city?");
+
+        let newTemp = document.querySelector(".currentTemp");
+        newTemp.innerHTML = cityTemp + "°";
+
+        let newWeatherSymbol = document.querySelector(".weatherSymbol");
+
+        if (cityTemp < 0) {
+          newWeatherSymbol.innerHTML = "☹";
+        } else {
+          newWeatherSymbol.innerHTML = "😄";
+        }
+
+        let newCity = document.querySelector(".city");
+        newCity.innerHTML = city;
+      }
+
+      let changeCityButton = document.querySelector("button");
+      changeCityButton.addEventListener("click", changeCity);
+    </script>
+  </body>
+</html>
