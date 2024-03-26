@@ -1,0 +1,57 @@
+name: Weather App CI/CD Pipeline
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build:
+    name: Build
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Build app
+        run: npm run build
+
+  test:
+    name: Test
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+
+      - name: Run unit tests
+        run: npm test
+
+  deploy:
+    name: Deploy
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+
+      - name: Deploy to staging environment
+        run: |
+          echo "Deploying the Weather App to staging environment"
+
+  notify:
+    name: Notify
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Notify team on failure
+        if: failure()
+        run: |
+          # Sending email notification
+          echo "Build or deployment failed. Please check the CI/CD pipeline logs."
+          echo "Sending email notification..."
+          echo "Email Content: Build or deployment failed. Please check the CI/CD pipeline logs." | mail -s "Weather App CI/CD Pipeline Notification" example@example.com
