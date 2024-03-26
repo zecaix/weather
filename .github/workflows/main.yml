@@ -54,4 +54,4 @@ jobs:
           # Sending email notification
           echo "Build or deployment failed. Please check the CI/CD pipeline logs."
           echo "Sending email notification..."
-          echo "Email Content: Build or deployment failed. Please check the CI/CD pipeline logs." | mail -s "Weather App CI/CD Pipeline Notification" example@example.com
+          echo "Email Content: Build or deployment failed. Please check the CI/CD pipeline logs." | mail -s "Weather App CI/CD Pipeline Notification" weather@app.com
